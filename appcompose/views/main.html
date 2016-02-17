@@ -1,0 +1,16 @@
+<div>
+	<input type="checkbox" ng-model="isLink" ng-init="isLink=false">Add as Link</input>
+</div>
+<div ng-controller="DropboxImportController">
+
+	<button href="#" ng-show="showButton" ng-click="showButton=false;">Add Files From Dropbox</button>
+	<dropbox ng-if="!showButton"
+		client-id="dbs5t07ybgfb8n2" 
+		receiver-url="https://outlookimport.azurewebsites.net/appcompose/oauth_receiver.html" 
+		dir="/"
+		template="/appcompose/templates/explorer.html"	
+		download="{{!isLink}}"
+		>
+	</dropbox>
+
+</div>

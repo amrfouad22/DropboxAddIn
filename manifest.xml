@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+  <Id>F66AE2A6-1065-4820-8AF9-DD70A911EC88</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Amr Fouad</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Attach From Dropbox"/>
+  <Description DefaultValue="Attach Files From Dropbox as Attachements or links"/>
+  <IconUrl DefaultValue="SITE_URL/home/images/logo_96x96.png"/>
+  <HighResolutionIconUrl DefaultValue="SITE_URL/home/images/logo.png"/>
+  <SupportUrl DefaultValue="SITE_URL"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="SITE_URL/appcompose/index.html"/>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+           <!-- Message compose form -->
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgComposeDemoGroup">
+                <Label resid="groupLabel" />
+                <Tooltip resid="groupTooltip" />
+                <!-- Task pane button -->
+                <Control xsi:type="Button" id="msgComposeOpenPaneButton">
+                  <Label resid="paneComposeButtonLabel" />
+                  <Tooltip resid="paneComposeButtonTooltip" />
+                  <Supertip>
+                    <Title resid="paneComposeSuperTipTitle" />
+                    <Description resid="paneComposeSuperTipDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="dropbox-icon-16" />
+                    <bt:Image size="32" resid="dropbox-icon-32" />
+                    <bt:Image size="80" resid="dropbox-icon-80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="composeTaskPaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="apptComposeDemoGroup">
+                <Label resid="groupLabel" />
+                <Tooltip resid="groupTooltip" />
+                <!-- Task pane button -->
+                <Control xsi:type="Button" id="apptComposeOpenPaneButton">
+                  <Label resid="paneComposeButtonLabel" />
+                  <Tooltip resid="paneComposeButtonTooltip" />
+                  <Supertip>
+                    <Title resid="paneComposeSuperTipTitle" />
+                    <Description resid="paneComposeSuperTipDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="dropbox-icon-16" />
+                    <bt:Image size="32" resid="dropbox-icon-32" />
+                    <bt:Image size="80" resid="dropbox-icon-80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="composeTaskPaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+     <Resources>
+      <bt:Images>
+        <!-- Green icon -->
+        <bt:Image id="dropbox-icon-16" DefaultValue="SITE_URL/images/dropbox-16.png"/>
+        <bt:Image id="dropbox-icon-32" DefaultValue="SITE_URL/images/dropbox-32.png"/>
+        <bt:Image id="dropbox-icon-80" DefaultValue="SITE_URL/images/dropbox-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="composeTaskPaneUrl" DefaultValue="SITE_URL/AppCompose/index.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Dropbox Import"/>
+        <!-- Compose mode -->        
+        <bt:String id="paneComposeButtonLabel" DefaultValue="Attach From Dropbox"/>
+        <bt:String id="paneComposeSuperTipTitle" DefaultValue="Select File to attach from your dropbox account"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="groupTooltip" DefaultValue="Select file from your dropbox account to add"/>
+        <!-- Compose mode -->
+        <bt:String id="paneComposeButtonTooltip" DefaultValue="select file from your dropbox account to add to your email message/appointement"/>
+        <bt:String id="paneComposeSuperTipDescription" DefaultValue="select file from your dropbox account to add to your email message or calendar invite , you can choose to add the file as attachement or as a link"/>        
+      </bt:LongStrings>
+    </Resources> 
+  </VersionOverrides>
+</OfficeApp>

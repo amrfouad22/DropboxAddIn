@@ -1,0 +1,22 @@
+<h1>{{dir=="/"?"root":dir}}</h1>
+<div>
+	<div> 
+		<span ng-if="loading"><img src="/appcompose/images/spinner.gif"/></span>
+	</div>
+	<div ng-if="!loading">
+		<div ng-if="dir!='/'"><a ng-click="levelUp()" style="cursor:pointer">Up ..</a></div>
+		<span ng-if="items.length==0&&!loading">this folder is empty</span>
+		<ul class="jqueryFileTree"  ng-repeat="item in statArr" id="list">
+			<!--if file render as a file-->
+			<li ng-if="item.isFile" class="{{'file ext_'+item.path.split('.').slice(-1).toString()}}">
+				<a ng-Dblclick="linkClick(false,item.path)" style="cursor:pointer" rel="{{item.path}}" title="file size {{item.humanSize}}">{{item.name}}({{item.humanSize}})</a>
+			</li>
+			<!--end of file render-->
+			<!--if folder-->
+			<!--simply change the directive scope dir to the current path-->
+			<li ng-if="item.isFolder" class="directory collapsed">
+				<a ng-Dblclick="linkClick(true,item.path)" style="cursor:pointer" rel="{{item.path}}">{{item.name}}</a>
+			</li>	
+		</ul>
+	</div>
+</div>

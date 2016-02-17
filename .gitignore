@@ -1,0 +1,11 @@
+node_modules
+bower_components
+**/bin/**
+**/packages/**
+**/obj/**
+typings
+packages.json
+tsd.json
+**Thumbs.db
+build/**
+.DS_Store
